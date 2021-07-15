@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+{% load myfilter %}
+{% block content %}
+<h2 class="alert alert-danger text-center mt-2">Candidate Dtails</h2>
+  <div class="row">
+      <div class="col-10 offset-sm-1 shadow">
+         <h4 class="text-center mb-3 "> Resume</h4>
+         <p class='float-end'>Application No : {{candidate.id}}</p>
+         <img src="{{candidate.profile_image.url}}" alt="" class="img-fluid img-thumbnail mt-4 float-end">
+         <p>Name : {{candidate.name}}</p>
+         <p>Date of Birth :{{candidate.dob}}</p>
+         <p>Gender : {{candidate.gender}}</p>
+         <p>Address : {{candidate.locality}},{{candidate.city}},{{candidate.state}}-{{candidate.pin}}</p>
+         <p>Mobile Number : {{candidate.mobile}}</p>
+         <p>Email Id : {{candidate.email}}</p>
+         <p>Perfact Job City : {{candidate.job |remove_spacial:"[]'"}}</p>
+         <p>Attachment : <a href="{{candidate.doc.url}}">Download File</a></p>
+
+         <p class="text-center mb-4"><a href="/" class="btn btn-danger">Candidate List</a></p>
+          
+      </div>
+  </div>
+
+{% endblock content %}

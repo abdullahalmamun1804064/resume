@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+
+<h2 class="alert alert-danger text-center mt-2">Resume Uploder</h2>
+  <div class="row">
+      <div class="col-8 shadow p-3">
+        <form action="" method="POST" enctype="multipart/form-data">
+         {% csrf_token %}  
+           {% for fm in form %}
+           <div class="form-group mb-3">
+             {{fm.label_tag}} {{fm}} <small class="alert-danger">{{fm.errors|striptags}}</small>
+           </div>
+             
+           {% endfor %}
+            <input type="submit" class="btn btn-sm btn-success" value="Submit">
+          {% if form.non_field_errors %}
+           {% for error in form.non_field_errors %}
+             <p class="alert alert-danger">{{error}}</p>
+           {% endfor %}
+          {% endif %}
+        </form> 
+      </div>
+
+      <div class="col-4">
+         <h4 class="text-center mb-3"> <u>Candidate List</u> </h4>
+         {% for candate in candates %}
+         <p>{{candate.id}} : <a href=" {% url 'candate' candate.id %}">{{candate.name}}</a></p> <hr>
+         {% endfor %}
+      </div>
+  </div>
+
+{% endblock content %}

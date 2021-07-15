@@ -1,0 +1,11 @@
+body{
+    background: rgb(236,239,245);
+  
+}
+#id_gender,#id_job{
+    list-style-type: none;
+    display: inline-flex;
+}
+ 
+ 
+
